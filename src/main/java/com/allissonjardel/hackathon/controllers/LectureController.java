@@ -29,6 +29,12 @@ public class LectureController {
 		return ResponseEntity.ok().body(list);
 	}
 	
+	@GetMapping("/event/{event_id}")
+	public ResponseEntity<List<Lecture>> findLecturesEventById(@PathVariable String event_id){
+		List<Lecture> list = service.findLecturesEventById(event_id);
+		return ResponseEntity.ok().body(list);
+	}
+	
 	@GetMapping("/{id}")
 	public ResponseEntity<Lecture> findById(@PathVariable String id){
 		return ResponseEntity.ok().body(service.findById(id));

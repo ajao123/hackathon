@@ -21,6 +21,10 @@ public class LectureService {
 		return repository.findAll();
 	}
 	
+	public List<Lecture> findLecturesEventById(String event_id) {
+		return repository.searchLectures(event_id);
+	}
+	
 	public Lecture findById(String id) {
 		Optional<Lecture> obj = repository.findById(id);  
 		return obj.get();
@@ -40,5 +44,6 @@ public class LectureService {
 		BeanUtils.copyProperties(newObj, obj, "id");
 		return repository.save(newObj);
 	}
+	
 	
 }

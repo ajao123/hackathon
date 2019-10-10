@@ -12,31 +12,31 @@ public class User implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	private String id;
+	private String _id;
 	private String email;
-	private String senha;
+	private String password;
 	private String name;
-	private Date birthDate;
+	private Date createdAt;
 	
 	public User() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(String id, String email, String senha, String name, Date birthDate) {
+	public User(String _id, String email, String password, String name, Date createdAt) {
 		super();
-		this.id = id;
+		this._id = _id;
 		this.email = email;
-		this.senha = senha;
+		this.password = password;
 		this.name = name;
-		this.birthDate = birthDate;
+		this.createdAt = createdAt;
 	}
 
-	public String getId() {
-		return id;
+	public String get_id() {
+		return _id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void set_id(String _id) {
+		this._id = _id;
 	}
 
 	public String getEmail() {
@@ -47,12 +47,12 @@ public class User implements Serializable{
 		this.email = email;
 	}
 
-	public String getSenha() {
-		return senha;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getName() {
@@ -63,19 +63,19 @@ public class User implements Serializable{
 		this.name = name;
 	}
 
-	public Date getBirthDate() {
-		return birthDate;
+	public Date getCreatedAt() {
+		return createdAt;
 	}
 
-	public void setBirthDate(Date birthDate) {
-		this.birthDate = birthDate;
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((_id == null) ? 0 : _id.hashCode());
 		return result;
 	}
 
@@ -88,12 +88,12 @@ public class User implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		if (id == null) {
-			if (other.id != null)
+		if (_id == null) {
+			if (other._id != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else if (!_id.equals(other._id))
 			return false;
 		return true;
 	}
-	
+
 }
