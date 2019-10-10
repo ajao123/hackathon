@@ -6,22 +6,22 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
-public class Event implements Serializable{
+public class Events implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	private String id;
 	private String user;
-	private Location location;
+	private Locations location;
 	private String name;
 	private String description;
 	
-	public Event() {
+	public Events() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Event(String id, String user, Location location, String name, String description) {
+	public Events(String id, String user, Locations location, String name, String description) {
 		super();
 		this.id = id;
 		this.user = user;
@@ -46,11 +46,11 @@ public class Event implements Serializable{
 		this.user = user;
 	}
 
-	public Location getLocation() {
+	public Locations getLocation() {
 		return location;
 	}
 
-	public void setLocation(Location location) {
+	public void setLocation(Locations location) {
 		this.location = location;
 	}
 
@@ -86,7 +86,7 @@ public class Event implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Event other = (Event) obj;
+		Events other = (Events) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

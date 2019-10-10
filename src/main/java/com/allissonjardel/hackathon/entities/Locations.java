@@ -2,18 +2,18 @@ package com.allissonjardel.hackathon.entities;
 
 import java.io.Serializable;
 
-public class Location{
+public class Locations{
 
 	private String address;
 	private String city;
 	private String country;
 	private String state;
 	
-	public Location() {
+	public Locations() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Location(String address, String city, String country, String state) {
+	public Locations(String address, String city, String country, String state) {
 		super();
 		this.address = address;
 		this.city = city;

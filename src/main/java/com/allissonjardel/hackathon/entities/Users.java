@@ -7,7 +7,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
-public class User implements Serializable{
+public class Users implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -18,11 +18,11 @@ public class User implements Serializable{
 	private String name;
 	private Date createdAt;
 	
-	public User() {
+	public Users() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(String _id, String email, String password, String name, Date createdAt) {
+	public Users(String _id, String email, String password, String name, Date createdAt) {
 		super();
 		this._id = _id;
 		this.email = email;
@@ -87,7 +87,7 @@ public class User implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		User other = (User) obj;
+		Users other = (Users) obj;
 		if (_id == null) {
 			if (other._id != null)
 				return false;

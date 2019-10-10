@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.allissonjardel.hackathon.entities.Lecture;
+import com.allissonjardel.hackathon.entities.Lectures;
 import com.allissonjardel.hackathon.services.LectureService;
 
 @RestController
@@ -24,30 +24,30 @@ public class LectureController {
 	private LectureService service;
 	
 	@GetMapping
-	public ResponseEntity<List<Lecture>> findAll(){
-		List<Lecture> list = service.findAll();
+	public ResponseEntity<List<Lectures>> findAll(){
+		List<Lectures> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@GetMapping("/event/{event_id}")
-	public ResponseEntity<List<Lecture>> findLecturesEventById(@PathVariable String event_id){
-		List<Lecture> list = service.findLecturesEventById(event_id);
+	public ResponseEntity<List<Lectures>> findLecturesEventById(@PathVariable String event_id){
+		List<Lectures> list = service.findLecturesEventById(event_id);
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Lecture> findById(@PathVariable String id){
+	public ResponseEntity<Lectures> findById(@PathVariable String id){
 		return ResponseEntity.ok().body(service.findById(id));
 	}
 	
 	@PostMapping
-	public ResponseEntity<Void> insert(@RequestBody Lecture lecture){
+	public ResponseEntity<Void> insert(@RequestBody Lectures lecture){
 		service.insert(lecture);
 		return ResponseEntity.ok().build();
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Void> put(@RequestBody Lecture lecture, @PathVariable String id){
+	public ResponseEntity<Void> put(@RequestBody Lectures lecture, @PathVariable String id){
 		service.update(lecture, id);
 		return ResponseEntity.ok().build();
 	}

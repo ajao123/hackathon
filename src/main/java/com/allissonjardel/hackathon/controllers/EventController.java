@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.allissonjardel.hackathon.entities.Event;
+import com.allissonjardel.hackathon.entities.Events;
 import com.allissonjardel.hackathon.services.EventService;
 
 @RestController
@@ -24,24 +24,24 @@ public class EventController {
 	private EventService service;
 	
 	@GetMapping
-	public ResponseEntity<List<Event>> findAll(){
-		List<Event> list = service.findAll();
+	public ResponseEntity<List<Events>> findAll(){
+		List<Events> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Event> findById(@PathVariable String id){
+	public ResponseEntity<Events> findById(@PathVariable String id){
 		return ResponseEntity.ok().body(service.findById(id));
 	}
 	
 	@PostMapping
-	public ResponseEntity<Void> insert(@RequestBody Event event){
+	public ResponseEntity<Void> insert(@RequestBody Events event){
 		service.insert(event);
 		return ResponseEntity.ok().build();
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Void> put(@RequestBody Event event, @PathVariable String id){
+	public ResponseEntity<Void> put(@RequestBody Events event, @PathVariable String id){
 		service.update(event, id);
 		return ResponseEntity.ok().build();
 	}

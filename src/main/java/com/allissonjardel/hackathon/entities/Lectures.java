@@ -6,7 +6,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
-public class Lecture implements Serializable{
+public class Lectures implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -18,11 +18,11 @@ public class Lecture implements Serializable{
 	private String title;
 	private String description;
 	
-	public Lecture() {
+	public Lectures() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Lecture(String id, String event_id, String speaker_id, String date, String title, String description) {
+	public Lectures(String id, String event_id, String speaker_id, String date, String title, String description) {
 		super();
 		this.id = id;
 		this.event_id = event_id;
@@ -96,7 +96,7 @@ public class Lecture implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Lecture other = (Lecture) obj;
+		Lectures other = (Lectures) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

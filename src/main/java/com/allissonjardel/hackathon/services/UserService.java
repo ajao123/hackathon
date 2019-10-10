@@ -7,7 +7,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.allissonjardel.hackathon.entities.User;
+import com.allissonjardel.hackathon.entities.Users;
 import com.allissonjardel.hackathon.repositories.UserRepository;
 
 
@@ -17,16 +17,16 @@ public class UserService {
 	@Autowired
 	private UserRepository repository;
 	
-	public List<User> findAll() {
+	public List<Users> findAll() {
 		return repository.findAll();
 	}
 	
-	public User findById(String id) {
-		Optional<User> obj = repository.findById(id);  
+	public Users findById(String id) {
+		Optional<Users> obj = repository.findById(id);  
 		return obj.get();
 	}
 	
-	public User insert(User obj) {
+	public Users insert(Users obj) {
 		return repository.insert(obj);
 	}
 	
@@ -35,8 +35,8 @@ public class UserService {
 		repository.deleteById(id);
 	}
 	
-	public User update(User obj, String id) {
-		User newObj = repository.findById(id).get();
+	public Users update(Users obj, String id) {
+		Users newObj = repository.findById(id).get();
 		BeanUtils.copyProperties(newObj, obj, "id");
 		return repository.save(newObj);
 	}

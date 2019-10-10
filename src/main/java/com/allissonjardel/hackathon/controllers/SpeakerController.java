@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.allissonjardel.hackathon.entities.Speaker;
+import com.allissonjardel.hackathon.entities.Speakers;
 import com.allissonjardel.hackathon.services.SpeakerService;
 
 @RestController
@@ -24,24 +24,24 @@ public class SpeakerController {
 	private SpeakerService service;
 	
 	@GetMapping
-	public ResponseEntity<List<Speaker>> findAll(){
-		List<Speaker> list = service.findAll();
+	public ResponseEntity<List<Speakers>> findAll(){
+		List<Speakers> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Speaker> findById(@PathVariable String id){
+	public ResponseEntity<Speakers> findById(@PathVariable String id){
 		return ResponseEntity.ok().body(service.findById(id));
 	}
 	
 	@PostMapping
-	public ResponseEntity<Void> insert(@RequestBody Speaker speaker){
+	public ResponseEntity<Void> insert(@RequestBody Speakers speaker){
 		service.insert(speaker);
 		return ResponseEntity.ok().build();
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Void> put(@RequestBody Speaker speaker, @PathVariable String id){
+	public ResponseEntity<Void> put(@RequestBody Speakers speaker, @PathVariable String id){
 		service.update(speaker, id);
 		return ResponseEntity.ok().build();
 	}

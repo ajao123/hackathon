@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.allissonjardel.hackathon.entities.User;
+import com.allissonjardel.hackathon.entities.Users;
 import com.allissonjardel.hackathon.services.UserService;
 
 @RestController
@@ -24,24 +24,24 @@ public class UserController {
 	private UserService service;
 	
 	@GetMapping
-	public ResponseEntity<List<User>> findAll(){
-		List<User> list = service.findAll();
+	public ResponseEntity<List<Users>> findAll(){
+		List<Users> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<User> findById(@PathVariable String id){
+	public ResponseEntity<Users> findById(@PathVariable String id){
 		return ResponseEntity.ok().body(service.findById(id));
 	}
 	
 	@PostMapping
-	public ResponseEntity<Void> insert(@RequestBody User user){
+	public ResponseEntity<Void> insert(@RequestBody Users user){
 		service.insert(user);
 		return ResponseEntity.ok().build();
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Void> put(@RequestBody User user, @PathVariable String id){
+	public ResponseEntity<Void> put(@RequestBody Users user, @PathVariable String id){
 		service.update(user, id);
 		return ResponseEntity.ok().build();
 	}
