@@ -1,6 +1,7 @@
 package com.allissonjardel.hackathon.controllers;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.allissonjardel.hackathon.entities.Events;
+import com.allissonjardel.hackathon.entities.dto.EventsDTO;
 import com.allissonjardel.hackathon.services.EventService;
+import com.allissonjardel.hackathon.services.UserService;
 
 @RestController
 @RequestMapping("/events")
@@ -23,10 +26,24 @@ public class EventController {
 	@Autowired
 	private EventService service;
 	
+	@Autowired
+	private UserService serviceUser;
+	
 	@GetMapping
-	public ResponseEntity<List<Events>> findAll(){
+	public ResponseEntity<List<EventsDTO>> findAll(){
 		List<Events> list = service.findAll();
-		return ResponseEntity.ok().body(list);
+		List<EventsDTO> listDTO = list.stream().map(x -> new EventsDTO(x)).collect(Collectors.toList());
+		
+		for(EventsDTO eventDTO : listDTO) {
+			
+			if(eventDTO.getUser() != null) {
+				if(serviceUser.findById(eventDTO.getUser()) != null) {
+					eventDTO.setUsers(serviceUser.findById(eventDTO.getUser()));
+				}
+			}
+		}
+		
+		return ResponseEntity.ok().body(listDTO);
 	}
 	
 	@GetMapping("/{id}")

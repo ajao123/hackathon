@@ -23,7 +23,7 @@ public class EventService {
 	
 	public Events findById(String id) {
 		Optional<Events> obj = repository.findById(id);  
-		return obj.get();
+		return obj.orElseThrow(() ->null); 
 	}
 	
 	public Events insert(Events obj) {

@@ -12,6 +12,9 @@ public class Speakers implements Serializable{
 	
 	@Id
 	private String id;
+	private String file_id;
+	private String trascription_id;
+	private String abstract_id;
 	private String name;
 	private String profession;
 	private String additional_info;
@@ -22,15 +25,23 @@ public class Speakers implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Speakers(String id, String name, String profession, String additional_info, String phone, String email) {
+	
+	
+	public Speakers(String id, String file_id, String trascription_id, String abstract_id, String name,
+			String profession, String additional_info, String phone, String email) {
 		super();
 		this.id = id;
+		this.file_id = file_id;
+		this.trascription_id = trascription_id;
+		this.abstract_id = abstract_id;
 		this.name = name;
 		this.profession = profession;
 		this.additional_info = additional_info;
 		this.phone = phone;
 		this.email = email;
 	}
+
+
 
 	public String getId() {
 		return id;
@@ -78,7 +89,42 @@ public class Speakers implements Serializable{
 
 	public void setEmail(String email) {
 		this.email = email;
+
 	}
+
+	public String getFile_id() {
+		return file_id;
+	}
+
+	public void setFile_id(String file_id) {
+		this.file_id = file_id;
+	}
+
+
+
+	public String getTrascription_id() {
+		return trascription_id;
+	}
+
+
+
+	public void setTrascription_id(String trascription_id) {
+		this.trascription_id = trascription_id;
+	}
+
+
+
+	public String getAbstract_id() {
+		return abstract_id;
+	}
+
+
+
+	public void setAbstract_id(String abstract_id) {
+		this.abstract_id = abstract_id;
+	}
+
+
 
 	@Override
 	public int hashCode() {

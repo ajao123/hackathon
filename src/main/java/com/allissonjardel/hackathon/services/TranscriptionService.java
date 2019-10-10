@@ -7,26 +7,28 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.allissonjardel.hackathon.entities.Speakers;
-import com.allissonjardel.hackathon.repositories.SpeakerRepository;
+import com.allissonjardel.hackathon.entities.Transcriptions;
+import com.allissonjardel.hackathon.repositories.TranscriptionRepository;
 
 
 @Service
-public class SpeakerService {
+public class TranscriptionService {
 
 	@Autowired
-	private SpeakerRepository repository;
+	private TranscriptionRepository repository;
 	
-	public List<Speakers> findAll() {
+	
+	public List<Transcriptions> findAll() {
 		return repository.findAll();
 	}
 	
-	public Speakers findById(String id) {
-		Optional<Speakers> obj = repository.findById(id);  
+	
+	public Transcriptions findById(String id) {
+		Optional<Transcriptions> obj = repository.findById(id);  
 		return obj.orElseThrow(() ->null); 
 	}
 	
-	public Speakers insert(Speakers obj) {
+	public Transcriptions insert(Transcriptions obj) {
 		return repository.insert(obj);
 	}
 	
@@ -35,8 +37,8 @@ public class SpeakerService {
 		repository.deleteById(id);
 	}
 	
-	public Speakers update(Speakers obj, String id) {
-		Speakers newObj = repository.findById(id).get();
+	public Transcriptions update(Transcriptions obj, String id) {
+		Transcriptions newObj = repository.findById(id).get();
 		BeanUtils.copyProperties(newObj, obj, "id");
 		return repository.save(newObj);
 	}

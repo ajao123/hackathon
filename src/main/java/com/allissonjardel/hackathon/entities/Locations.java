@@ -1,7 +1,5 @@
 package com.allissonjardel.hackathon.entities;
 
-import java.io.Serializable;
-
 public class Locations{
 
 	private String address;

@@ -7,26 +7,26 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.allissonjardel.hackathon.entities.Speakers;
-import com.allissonjardel.hackathon.repositories.SpeakerRepository;
+import com.allissonjardel.hackathon.entities.Files;
+import com.allissonjardel.hackathon.repositories.FileRepository;
 
 
 @Service
-public class SpeakerService {
+public class FileService {
 
 	@Autowired
-	private SpeakerRepository repository;
+	private FileRepository repository;
 	
-	public List<Speakers> findAll() {
+	public List<Files> findAll() {
 		return repository.findAll();
 	}
 	
-	public Speakers findById(String id) {
-		Optional<Speakers> obj = repository.findById(id);  
+	public Files findById(String id) {
+		Optional<Files> obj = repository.findById(id);  
 		return obj.orElseThrow(() ->null); 
 	}
 	
-	public Speakers insert(Speakers obj) {
+	public Files insert(Files obj) {
 		return repository.insert(obj);
 	}
 	
@@ -35,8 +35,8 @@ public class SpeakerService {
 		repository.deleteById(id);
 	}
 	
-	public Speakers update(Speakers obj, String id) {
-		Speakers newObj = repository.findById(id).get();
+	public Files update(Files obj, String id) {
+		Files newObj = repository.findById(id).get();
 		BeanUtils.copyProperties(newObj, obj, "id");
 		return repository.save(newObj);
 	}

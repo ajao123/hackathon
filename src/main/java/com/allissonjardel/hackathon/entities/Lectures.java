@@ -14,6 +14,7 @@ public class Lectures implements Serializable{
 	private String id;
 	private String event_id;
 	private String speaker_id;
+	private String file_id;
 	private String date;
 	private String title;
 	private String description;
@@ -22,11 +23,13 @@ public class Lectures implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Lectures(String id, String event_id, String speaker_id, String date, String title, String description) {
+	public Lectures(String id, String event_id, String speaker_id, String file_id, String date, String title,
+			String description) {
 		super();
 		this.id = id;
 		this.event_id = event_id;
 		this.speaker_id = speaker_id;
+		this.file_id = file_id;
 		this.date = date;
 		this.title = title;
 		this.description = description;
@@ -78,6 +81,14 @@ public class Lectures implements Serializable{
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	public String getFile_id() {
+		return file_id;
+	}
+
+	public void setFile_id(String file_id) {
+		this.file_id = file_id;
 	}
 
 	@Override

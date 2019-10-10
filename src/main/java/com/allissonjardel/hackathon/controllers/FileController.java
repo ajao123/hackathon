@@ -1,7 +1,6 @@
 package com.allissonjardel.hackathon.controllers;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,52 +13,36 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.allissonjardel.hackathon.entities.Speakers;
-import com.allissonjardel.hackathon.entities.dto.SpeakersDTO;
+import com.allissonjardel.hackathon.entities.Files;
 import com.allissonjardel.hackathon.services.FileService;
-import com.allissonjardel.hackathon.services.SpeakerService;
 
 @RestController
-@RequestMapping("/speakers")
-public class SpeakerController {
+@RequestMapping("/files")
+public class FileController {
 	
 	@Autowired
-	private SpeakerService service;
-	
-	@Autowired
-	private FileService serviceFile;
+	private FileService service;
 	
 	@GetMapping
-	public ResponseEntity<List<SpeakersDTO>> findAll(){
-		List<Speakers> list = service.findAll();
-		List<SpeakersDTO> listDTO = list.stream().map(x -> new SpeakersDTO(x)).collect(Collectors.toList());
-			
-		for(SpeakersDTO speakerDTO : listDTO) {
-			
-			if(speakerDTO.getFile_id() != null) {
-				if(serviceFile.findById(speakerDTO.getFile_id()) != null) {
-					speakerDTO.setFile(serviceFile.findById(speakerDTO.getFile_id()));
-				}
-			}
-		}
-		
-		return ResponseEntity.ok().body(listDTO);
+	public ResponseEntity<List<Files>> findAll(){
+		List<Files> list = service.findAll();
+		return ResponseEntity.ok().body(list);
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Speakers> findById(@PathVariable String id){
+	public ResponseEntity<Files> findById(@PathVariable String id){
 		return ResponseEntity.ok().body(service.findById(id));
 	}
 	
 	@PostMapping
-	public ResponseEntity<Void> insert(@RequestBody Speakers speaker){
-		service.insert(speaker);
+	public ResponseEntity<Void> insert(@RequestBody Files file){
+		service.insert(file);
 		return ResponseEntity.ok().build();
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Void> put(@RequestBody Speakers speaker, @PathVariable String id){
-		service.update(speaker, id);
+	public ResponseEntity<Void> put(@RequestBody Files file, @PathVariable String id){
+		service.update(file, id);
 		return ResponseEntity.ok().build();
 	}
 	
